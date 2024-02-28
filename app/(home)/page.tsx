@@ -5,10 +5,12 @@ import Search from "./_components/search";
 import BookingItem from "../_components/booking-item";
 import { db } from "../_lib/prisma";
 import ServiceItem from "./_components/service-item";
+import PlanItem from "./_components/plan-item"; // Importe o componente PlanItem
 
 export default async function Home() {
-  // Chamar prisma e pegar os servicos
-  const services = await db.service.findMany({})
+  // Chamar prisma e pegar os serviços e planos
+  const services = await db.service.findMany({});
+  const plans = await db.plan.findMany({}); // Recupere os planos do banco de dados
 
   return (
     <div>
@@ -31,14 +33,23 @@ export default async function Home() {
       </div>
 
       <div className="mt-6">
-        <h2 className="px-5 text-xs uppercase text-gray-400 font-bold mb-3">Recomendados</h2>
-
+        <h2 className="px-5 text-xs uppercase text-gray-400 font-bold mb-3">Serviços</h2>
         <div className="flex px-5 gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {services.map((service) => (
             <ServiceItem key={service.id} service={service} />
           ))}
         </div>
       </div>
+
+      <div className="mt-6">
+        <h2 className="px-5 text-xs uppercase text-gray-400 font-bold mb-3">Planos</h2>
+        <div className="flex px-5 gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          {plans.map((plan) => ( // Mapeie sobre os planos e renderize cada um
+            <PlanItem key={plan.id} plan={plan} />
+          ))}
+        </div>
+      </div>
+
     </div>
   )
 }

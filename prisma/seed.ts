@@ -128,6 +128,30 @@ async function seedDatabase() {
       barbershops.push(barbershop);
     }
 
+    // Criar planos de mensalidade
+    const plans = [
+      {
+        name: "Plano Mensal",
+        price: 29.99,
+        duration: "mensal",
+        imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png" // Substitua "URL_DA_IMAGEM_AQUI" pela URL real da imagem
+      },
+      {
+        name: "Plano Semestral",
+        price: 149.99,
+        duration: "semestral",
+        imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png"
+      },
+      {
+        name: "Plano Anual",
+        price: 279.99,
+        duration: "anual",
+        imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png"
+      },
+      // Adicione mais planos conforme necessário
+    ];
+
+
     // Fechar a conexão com o banco de dados
     await prisma.$disconnect();
   } catch (error) {

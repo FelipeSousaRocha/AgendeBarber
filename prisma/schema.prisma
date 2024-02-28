@@ -83,3 +83,11 @@ model Service {
   imageUrl     String
   bookings     Booking[]
 }
+
+model Plan {
+  id       String  @id @default(cuid())
+  name     String
+  price    Float
+  duration String // Pode ser "mensal", "semestral", "anual", etc.
+  imageUrl String?
+}
