@@ -23,9 +23,11 @@ const PlanItem = ({ plan }: PlanItemProps) => {
               className="rounded-2xl"
               src={plan.imageUrl}
               alt={plan.name}
-              style={{
-                objectFit: "cover"
-              }}
+              style={
+                {
+                  objectFit: "cover"
+                }
+              }
             />
           )}
         </div>
