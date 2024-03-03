@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import Search from "./_components/search";
 import BookingItem from "../_components/booking-item";
 import { db } from "../_lib/prisma";
-import ServiceItem from "./_components/service-item";
+import ServiceItem from "../_components/service-item";
 import PlanItem from "./_components/plan-item"; // Importe o componente PlanItem
 
 export default async function Home() {
