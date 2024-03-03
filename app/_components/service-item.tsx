@@ -26,33 +26,44 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
   }
 
   return (
-    <Card className="min-w-[167px] max-w[167px] rounded-2xl">
-      <CardContent className="px-1 py-0">
+    <Card>
+      <CardContent className="p-3">
 
-        <div className="w-full h-[120px] relative">
-          <div className="absolute top-2 left-2 z-50">
-            <Badge variant="secondary" className="opacity-90 flex gap-1 items-center top-3 left-3">
-              <StarIcon size={12} className="fill-primary text-primary" />
-              <span className="text-xs">5,0</span>
-            </Badge>
-          </div>
-          <Image
-            fill
-            className="rounded-2xl"
-            src={service.imageUrl}
-            alt={service.name}
-            style={
-              {
-                objectFit: "cover"
+        <div className="flex gap-4 items-center">
+          <div className="min-w-[110px] min-h-[110px] max-w-[110px] max-h-[110px] relative">
+            <div className="absolute top-1 left-1 z-50">
+              <Badge variant="secondary" className="opacity-90 flex gap-1 items-center top-3 left-3">
+                <StarIcon size={12} className="fill-primary text-primary" />
+                <span className="text-xs">5,0</span>
+              </Badge>
+            </div>
+            <Image
+              fill
+              className="rounded-lg"
+              src={service.imageUrl}
+              alt={service.name}
+              style={
+                {
+                  objectFit: "cover"
+                }
               }
-            }
-          />
-        </div>
+            />
+          </div>
+          <div className="flex flex-col w-full">
 
-        <div className="px-2 pb-3">
-          <h2 className="font-bold mt-2 overflow-hidden text-ellipsis text-nowrap">{service.name}</h2>
-          <p className="text-primary text-lg overflow-hidden text-ellipsis text-nowrap">{formatter.format(Number(service.price))}</p>
-          <Button className="w-full mt-3" variant="secondary" onClick={handleBookingClick}>Agendar</Button>
+            <h2 className="font-bold">{service.name}</h2>
+            <p className="text-sm text-gray-400">{service.description}</p>
+
+            <div className="flex items-center justify-between mt-3">
+              <p className="text-primary text-sm font-bold">{formatter.format(Number(service.price))}</p>
+              <Button
+                className="ml-3"
+                variant="secondary"
+                onClick={handleBookingClick}>
+                Agendar
+              </Button>
+            </div>
+          </div>
         </div>
 
       </CardContent>

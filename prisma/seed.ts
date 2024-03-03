@@ -134,7 +134,7 @@ async function seedDatabase() {
         name: "Plano Mensal",
         price: 29.99,
         duration: "mensal",
-        imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png" // Substitua "URL_DA_IMAGEM_AQUI" pela URL real da imagem
+        imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png"
       },
       {
         name: "Plano Semestral",
@@ -150,6 +150,18 @@ async function seedDatabase() {
       },
       // Adicione mais planos conforme necessário
     ];
+
+    // Criar os planos de mensalidade
+    for (const plan of plans) {
+      await prisma.plan.create({
+        data: {
+          name: plan.name,
+          price: plan.price,
+          duration: plan.duration,
+          imageUrl: plan.imageUrl,
+        },
+      });
+    }
 
 
     // Fechar a conexão com o banco de dados

@@ -87,7 +87,7 @@ model Service {
 model Plan {
   id       String  @id @default(cuid())
   name     String
-  price    Float
+  price    Decimal @db.Decimal(10, 2)
   duration String // Pode ser "mensal", "semestral", "anual", etc.
   imageUrl String?
 }
