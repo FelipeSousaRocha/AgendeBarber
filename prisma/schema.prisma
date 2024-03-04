@@ -79,7 +79,7 @@ model Service {
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   name         String
   description  String
-  price        Decimal    @db.Decimal(10, 2)
+  price        Float // Alterado de Decimal para Float
   imageUrl     String
   bookings     Booking[]
 }
@@ -87,7 +87,7 @@ model Service {
 model Plan {
   id       String  @id @default(cuid())
   name     String
-  price    Decimal @db.Decimal(10, 2)
+  price    Float // Alterado de Decimal para Float
   duration String // Pode ser "mensal", "semestral", "anual", etc.
   imageUrl String?
 }
