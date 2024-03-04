@@ -6,11 +6,15 @@ import BookingItem from "../_components/booking-item";
 import { db } from "../_lib/prisma";
 import ServiceItem from "../_components/service-item";
 import PlanItem from "./_components/plan-item"; // Importe o componente PlanItem
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export default async function Home() {
   // Chamar prisma e pegar os serviços e planos
   const services = await db.service.findMany({});
   const plans = await db.plan.findMany({}); // Recupere os planos do banco de dados
+
+  const session = await getServerSession(authOptions)
 
   return (
     <div>
@@ -36,7 +40,7 @@ export default async function Home() {
         <h2 className="px-5 text-xs uppercase text-gray-400 font-bold mb-3">Serviços</h2>
         <div className="flex px-5 gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {services.map((service) => (
-            <ServiceItem key={service.id} service={service} />
+            <ServiceItem key={service.id} service={service} isAuthenticated={!!session?.user} />
           ))}
         </div>
       </div>
