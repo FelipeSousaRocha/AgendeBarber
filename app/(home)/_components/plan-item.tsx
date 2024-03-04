@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/app/_components/ui/button";
 import { Card, CardContent } from "@/app/_components/ui/card";
 import { Plan } from '@prisma/client'; // Importe o tipo correto do Prisma para Plan
@@ -28,10 +30,12 @@ const PlanItem = ({ plan }: PlanItemProps) => {
         </div>
         <div className="px-2 pb-3">
           <h2 className="font-bold mt-2 overflow-hidden text-ellipsis text-nowrap">{plan.name}</h2>
-          <p className="text-primary text-lg overflow-hidden text-ellipsis text-nowrap">{Intl.NumberFormat("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          }).format(Number(plan.price))}</p>
+          <p className="text-primary text-sm font-bold">
+            {Intl.NumberFormat("pt-BR", {
+              style: "currency",
+              currency: "BRL",
+            }).format(Number(plan.price))}
+          </p>
           <Button className="w-full mt-3" variant="secondary">Agendar</Button>
         </div>
       </CardContent>

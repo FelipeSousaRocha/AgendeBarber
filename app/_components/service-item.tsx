@@ -12,11 +12,6 @@ interface ServiceItemProps {
   service: Service;
 }
 
-const formatter = new Intl.NumberFormat('pt-BR', {
-  style: 'currency',
-  currency: 'BRL',
-});
-
 const ServiceItem = ({ service }: ServiceItemProps) => {
 
   const router = useRouter();
@@ -55,10 +50,12 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
             <p className="text-sm text-gray-400">{service.description}</p>
 
             <div className="flex items-center justify-between mt-3">
-              <p className="text-primary text-sm font-bold">{Intl.NumberFormat("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              }).format(Number(service.price))}</p>
+              <p className="text-primary text-sm font-bold">
+                {Intl.NumberFormat("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                }).format(Number(service.price))}
+              </p>
               <Button
                 className="ml-3"
                 variant="secondary"
