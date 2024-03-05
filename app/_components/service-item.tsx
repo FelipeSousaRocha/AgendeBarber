@@ -8,6 +8,7 @@ import Image from "next/image";
 import { Badge } from "@/app/_components/ui/badge";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 
 interface ServiceItemProps {
   service: Service;
@@ -65,12 +66,22 @@ const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {
                 }).format(Number(service.price))}
               </p>
 
-              <Button
-                className="ml-3"
-                variant="secondary"
-                onClick={handleBookingClick}>
-                Agendar
-              </Button>
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button
+                    className="ml-3"
+                    variant="secondary"
+                    onClick={handleBookingClick}>
+                    Agendar
+                  </Button>
+                  </SheetTrigger>
+
+                  <SheetContent>
+                    <SheetHeader>
+                      <SheetTitle>Fazer agendamento</SheetTitle>
+                    </SheetHeader>
+                  </SheetContent>               
+              </Sheet>
             </div>
           </div>
         </div>
