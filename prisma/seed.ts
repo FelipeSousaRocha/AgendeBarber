@@ -6,6 +6,13 @@ async function seedDatabase() {
   try {
     const imageUrl = "https://utfs.io/f/c97a2dc9-cf62-468b-a851-bfd2bdde775f-16p.png"; // URL da imagem para a barbearia
 
+    // Verifica se já existe uma barbearia criada
+    const existingBarbershop = await prisma.barbershop.findFirst();
+    if (existingBarbershop) {
+      console.log("Já existe uma barbearia no banco de dados.");
+      return;
+    }
+
     // Criar a barbearia
     const barbershop = await prisma.barbershop.create({
       data: {
@@ -23,6 +30,30 @@ async function seedDatabase() {
         price: 60.0,
         imageUrl: "https://utfs.io/f/0ddfbd26-a424-43a0-aaf3-c3f1dc6be6d1-1kgxo7.png",
       },
+      {
+        name: "Barba",
+        description: "Barba feita com técnica e cuidado.",
+        price: 40.0,
+        imageUrl: "https://utfs.io/f/0ddfbd26-a424-43a0-aaf3-c3f1dc6be6d1-1kgxo7.png",
+      },
+      {
+        name: "Penteado",
+        description: "Penteado personalizado de acordo com seu estilo.",
+        price: 50.0,
+        imageUrl: "https://utfs.io/f/0ddfbd26-a424-43a0-aaf3-c3f1dc6be6d1-1kgxo7.png",
+      },
+      {
+        name: "Coloração",
+        description: "Coloração de cabelo profissional.",
+        price: 80.0,
+        imageUrl: "https://utfs.io/f/0ddfbd26-a424-43a0-aaf3-c3f1dc6be6d1-1kgxo7.png",
+      },
+      {
+        name: "Tratamento Capilar",
+        description: "Tratamento intensivo para saúde dos cabelos.",
+        price: 70.0,
+        imageUrl: "https://utfs.io/f/0ddfbd26-a424-43a0-aaf3-c3f1dc6be6d1-1kgxo7.png",
+      }
       // Adicione mais serviços conforme necessário
     ];
 
@@ -50,6 +81,18 @@ async function seedDatabase() {
         duration: "mensal",
         imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png"
       },
+      {
+        name: "Plano Semestral",
+        price: 150.0,
+        duration: "semestral",
+        imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png"
+      },
+      {
+        name: "Plano Anual",
+        price: 300.0,
+        duration: "anual",
+        imageUrl: "https://utfs.io/f/c4919193-a675-4c47-9f21-ebd86d1c8e6a-4oen2a.png"
+      }
       // Adicione mais planos conforme necessário
     ];
 

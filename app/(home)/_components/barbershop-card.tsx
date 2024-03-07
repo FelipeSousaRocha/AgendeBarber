@@ -17,8 +17,12 @@ const BarbershopCard = ({ barbershop }: BarbershopCardProps) => {
             src={barbershop.imageUrl}
             alt={barbershop.name}
             className="rounded-2xl"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={
+              {
+                objectFit: "cover"
+              }
+            }
           />
         </div>
         <div className="px-2 pb-3">

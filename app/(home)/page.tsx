@@ -10,9 +10,11 @@ import BarbershopCard from './_components/barbershop-card'; // Importe o compone
 import PlanItem from './_components/plan-item'; // Importe o componente PlanItem
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]/route';
+import ServiceItem from '../_components/service-item';
 
 export default async function Home() {
   // Chamar prisma e pegar os planos
+  const services = await db.service.findMany({});
   const plans = await db.plan.findMany({});
   const barbershops = await db.barbershop.findMany({}); // Recupere as barbearias
 
@@ -43,6 +45,15 @@ export default async function Home() {
         <div className="flex px-5 gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
           {barbershops.map((barbershop) => (
             <BarbershopCard key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-6">
+        <h2 className="px-5 text-xs uppercase text-gray-400 font-bold mb-3">Serviços populares</h2>
+        <div className="flex px-5 gap-4 overflow-x-auto [&::-webkit-scrollbar]:hidden">
+          {services.map((service) => (
+            <ServiceItem barbershop={barbershops[0]} key={service.id} service={service} isAuthenticated={!!session?.user} />
           ))}
         </div>
       </div>
