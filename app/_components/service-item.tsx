@@ -14,6 +14,8 @@ import { ptBR } from "date-fns/locale";
 import { generateDayTimeList } from "../barbershops/_helpers/hours";
 import { format, setHours, setMinutes } from "date-fns";
 import { saveBooking } from "../barbershops/[id]/_actions/save-booking";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface ServiceItemProps {
   barbershop: Barbershop
@@ -23,27 +25,37 @@ interface ServiceItemProps {
 
 const ServiceItem = ({ service, isAuthenticated, barbershop }: ServiceItemProps) => {
 
+  const router = useRouter();
+
+  // Obtenha os dados da sessão do usuário
   const { data } = useSession();
 
+  // Variáveis de estado
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [hour, setHour] = useState<string | undefined>();
+  const [sheetIsOpen, setSheetIsOpen] = useState(false);
 
+  // Lidar com a seleção de data
   const handleDateClick = (date: Date | undefined) => {
     setDate(date);
-    setHour(undefined);
+    setHour(undefined);  // Redefina a hora quando a data mudar
   };
 
+  // Lidar com a seleção de hora
   const handleHourClick = (time: string) => {
     setHour(time)
   };
 
+  // Lidar com o clique no botão de reserva
   const handleBookingClick = () => {
     if (!isAuthenticated) {
+      // Redirecione para o login do Google se o usuário não estiver autenticado
       return signIn("google")
     }
   };
 
+  // Lidar com o envio do agendamento
   const handleBookingSubmit = async () => {
     setSubmitIsLoading(true);
 
@@ -52,24 +64,45 @@ const ServiceItem = ({ service, isAuthenticated, barbershop }: ServiceItemProps)
         return
       }
 
+      // Converta a string de hora para um objeto de data
       const dateHour = Number(hour.split(':')[0])
       const dateMinutes = Number(hour.split(':')[1])
-
       const newDate = setMinutes(setHours(date, dateHour), dateMinutes)
 
+      // Salve os detalhes do agendamento 
       await saveBooking({
         serviceId: service.id,
         barbershopId: barbershop.id,
         date: newDate,
         userId: (data.user as any).id,
-      })
+      });
+
+      // Feche a janela de agendamento
+      setSheetIsOpen(false);
+
+      // Resetar hora e data
+      setHour(undefined);
+      setDate(undefined);
+
+      // Notificacao de agendamento feito
+      toast("Agendamento realizado com sucesso!", {
+        description: format(newDate, "'Para' dd 'de' MMMM 'ás' HH':'mm'.'", {
+          locale: ptBR,
+        }),
+        action: {
+          label: "Visualizar",
+          onClick: () => router.push('/bookings'),
+        },
+      });
+
     } catch (error) {
-      console.error(error)
+      console.error(error);
     } finally {
-      setSubmitIsLoading(false)
+      setSubmitIsLoading(false);
     }
   }
 
+  // Gere a lista de horários disponíveis com base na data selecionada
   const timeList = useMemo(() => {
     return date ? generateDayTimeList(date) : []
   }, [date]);
@@ -113,7 +146,7 @@ const ServiceItem = ({ service, isAuthenticated, barbershop }: ServiceItemProps)
                 }).format(Number(service.price))}
               </p>
 
-              <Sheet>
+              <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
                 <SheetTrigger asChild>
                   <Button
                     className="ml-3"
