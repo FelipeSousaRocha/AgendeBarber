@@ -2,20 +2,21 @@
 
 import { Button } from "@/app/_components/ui/button";
 import { Card, CardContent } from "@/app/_components/ui/card";
-import { Barbershop, Service } from '@prisma/client'
+import { Barbershop, Booking, Service } from '@prisma/client'
 import { Loader2, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { Badge } from "@/app/_components/ui/badge";
 import { signIn, useSession } from "next-auth/react";
 import { Sheet, SheetContent, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
 import { Calendar } from "./ui/calendar";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ptBR } from "date-fns/locale";
 import { generateDayTimeList } from "../barbershops/_helpers/hours";
 import { format, setHours, setMinutes } from "date-fns";
 import { saveBooking } from "../barbershops/[id]/_actions/save-booking";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { getDayBookings } from "../barbershops/[id]/_actions/get-day-booking";
 
 interface ServiceItemProps {
   barbershop: Barbershop
@@ -25,6 +26,7 @@ interface ServiceItemProps {
 
 const ServiceItem = ({ service, isAuthenticated, barbershop }: ServiceItemProps) => {
 
+  // Usar router do Next para direcionar para outra pagina
   const router = useRouter();
 
   // Obtenha os dados da sessão do usuário
@@ -35,6 +37,23 @@ const ServiceItem = ({ service, isAuthenticated, barbershop }: ServiceItemProps)
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [hour, setHour] = useState<string | undefined>();
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
+  const [dayBookings, setDayBookings] = useState<Booking[]>([]);
+
+  // Modificar dia de agendamento
+  useEffect(() => {
+
+    if (!date) {
+      return
+    }
+
+    const refreshAvailableHours = async () => {
+      const _dayBookings = await getDayBookings(date);
+
+      setDayBookings(_dayBookings);
+    };
+
+    refreshAvailableHours();
+  }, [date])
 
   // Lidar com a seleção de data
   const handleDateClick = (date: Date | undefined) => {
@@ -98,14 +117,37 @@ const ServiceItem = ({ service, isAuthenticated, barbershop }: ServiceItemProps)
     } catch (error) {
       console.error(error);
     } finally {
+      // Para de carregar o icone
       setSubmitIsLoading(false);
     }
   }
 
   // Gere a lista de horários disponíveis com base na data selecionada
   const timeList = useMemo(() => {
-    return date ? generateDayTimeList(date) : []
-  }, [date]);
+    if (!date) {
+      return []
+    }
+
+    return generateDayTimeList(date).filter(time => {
+      // Se houver algum agendamento em "dayBookings" com a hora e  minutos igual a time, nao incluir
+
+      const timeHour = Number(time.split(':')[0]);
+      const timeMinutes = Number(time.split(':')[1]);
+
+      const booking = dayBookings.find(booking => {
+        const bookingHour = booking.date.getHours();
+        const bookingMinutes = booking.date.getMinutes();
+
+        return bookingHour === timeHour && bookingMinutes === timeMinutes;
+      })
+
+      if (!booking) {
+        return true
+      }
+      return false;
+
+    })
+  }, [date, dayBookings]);
 
   return (
     <Card>
