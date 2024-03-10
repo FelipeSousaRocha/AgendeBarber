@@ -53,7 +53,7 @@ const ServiceItem = ({ service, isAuthenticated, barbershop }: ServiceItemProps)
     };
 
     refreshAvailableHours();
-  }, [date])
+  }, [barbershop.id, date])
 
   // Lidar com a seleção de data
   const handleDateClick = (date: Date | undefined) => {
