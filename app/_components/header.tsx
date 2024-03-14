@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import SideMenu from "./side-menu";
+import Link from "next/link";
 
 const Header = () => {
 
@@ -13,7 +14,9 @@ const Header = () => {
     <Card>
       <CardContent className="p-4 justify-between flex flex-row items-center">
 
-        <Image className="-m-12" src="/logo.png" alt={"FSW Barber"} height={30} width={160} />
+        <Link href="/">
+          <Image className="-m-12" src="/logo.png" alt={"FSW Barber"} height={30} width={160} />
+        </Link>
 
         <Sheet>
           <SheetTrigger asChild>
@@ -23,7 +26,7 @@ const Header = () => {
           </SheetTrigger>
 
           <SheetContent className="p-0">
-            <SideMenu/>
+            <SideMenu />
           </SheetContent>
         </Sheet>
 
