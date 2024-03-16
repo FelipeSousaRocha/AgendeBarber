@@ -14,8 +14,8 @@ const Header = () => {
     <Card>
       <CardContent className="p-4 justify-between flex flex-row items-center">
 
-        <Link href="/">
-          <Image className="-m-12" src="/logo.png" alt={"FSW Barber"} height={30} width={160} />
+        <Link href="/" >
+          <Image src="/logo.png" alt="Agende barber" height={36} width={120} />
         </Link>
 
         <Sheet>
