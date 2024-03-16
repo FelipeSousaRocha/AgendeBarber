@@ -7,8 +7,8 @@ import { db } from '../_lib/prisma';
 import BarbershopCard from './_components/barbershop-card'; // Importe o componente BarbershopCard
 import PlanItem from './_components/plan-item'; // Importe o componente PlanItem
 import { getServerSession } from 'next-auth';
-import { authOptions } from '../api/auth/[...nextauth]/route';
 import ServiceItem from '../_components/service-item';
+import { authOptions } from '../_lib/auth';
 
 export default async function Home() {
 
