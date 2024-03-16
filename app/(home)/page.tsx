@@ -42,11 +42,15 @@ export default async function Home() {
       <Header />
 
       <div className="px-5 pt-5">
-        <h2 className="text-xl font-bold">{session?.user ? `Ola, ${session.user.name?.split('')[0]}!` : 'Ola, vamo agendar seu corte hoje?'}</h2>
+        <h2 className="text-xl font-bold">
+          {session?.user ? `Olá, ${session.user.name && session.user.name.length <= 3 ? session.user.name : session.user.name?.split(" ")[0]}!` : 'Olá, vamos agendar seu corte hoje?'}
+        </h2>
         <p className="capitalize text-sm">{format(new Date(), "EEEE',' dd 'de' MMMM", {
           locale: ptBR,
         })}</p>
       </div>
+
+
 
       <div className="px-5 mt-6">
         <Search />

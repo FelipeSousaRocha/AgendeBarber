@@ -54,7 +54,7 @@ model VerificationToken {
 }
 
 model Barbershop {
-  id       String    @id @default(uuid())
+  id       String    @id @unique @default(uuid())
   name     String
   address  String
   imageUrl String
