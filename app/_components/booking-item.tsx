@@ -178,25 +178,20 @@ const BookingItem = ({ booking }: BookingItemProps) => {
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button disabled={!isBookingConfirmed || isDeleteLoading} className="w-full" variant="destructive">
-                  Cancelar agendamento
+                  Cancelar Agendamento
                 </Button>
               </AlertDialogTrigger>
-              <AlertDialogContent className="w=[90%]">
+              <AlertDialogContent className="w-[90%]">
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Deseja cancelar seu agendamento?</AlertDialogTitle>
+                  <AlertDialogTitle>Deseja cancelar esse agendamento?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Uma vez cancelada, nao sera possivel reverter essa acao!
+                    Uma vez cancelada, não será possível reverter essa ação.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
-                <AlertDialogFooter className="flex flex-row">
-                  <AlertDialogCancel className="w-full mt-0" onClick={handleCancelClick}>
-                    Nao
-                  </AlertDialogCancel>
-                  <AlertDialogAction className="w-full" disabled={isDeleteLoading}>                  {
-                    isDeleteLoading && (
-                      <Loader2 className="mr-2 h-4 animate-spin" />
-                    )
-                  }
+                <AlertDialogFooter className="flex-row gap-3">
+                  <AlertDialogCancel className="w-full mt-0">Nao</AlertDialogCancel>
+                  <AlertDialogAction disabled={isDeleteLoading} className="w-full" onClick={handleCancelClick}>
+                    {isDeleteLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     Sim
                   </AlertDialogAction>
                 </AlertDialogFooter>
