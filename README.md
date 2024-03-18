@@ -1,40 +1,77 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Documento de Visão: Sistema de Agendamento de Barbearia
 
-## Getting Started
+## Tabela de conteúdos
+1. [Introdução](#introducao)
+2. [Descrição do Problema](#descricao-do-problema)
+3. [Descrição dos Usuários](#descricao-dos-usuarios)
+4. [Alternativas Concorrentes](#alternativas-concorrentes)
+5. [Escopo](#escopo)
+6. [Requisitos Funcionais](#requisitos-funcionais)
+7. [Requisitos Não Funcionais](#requisitos-nao-funcionais)
+8. [Regras de Negócio](#regras-de-negocio)
+9. [Diagrama de Casos de Uso](#diagrama-de-casos-de-uso)
+10. [Requisitos Funcionais x Casos de Uso](#requisitos-funcionais-x-casos-de-uso)
 
-First, run the development server:
+## <a id="introducao"></a>Introdução
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+O Sistema de Agendamento de Barbearia é uma plataforma web desenvolvida para facilitar o agendamento de serviços em barbearias, proporcionando uma experiência conveniente e eficiente para os clientes e otimizando a gestão da agenda para os proprietários de barbearias.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## <a id="descricao-do-problema"></a>Descrição do Problema
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+O alto volume de clientes e a complexidade na gestão da agenda são desafios enfrentados pelas barbearias. Os clientes muitas vezes encontram dificuldades para agendar serviços, enquanto os proprietários enfrentam problemas para gerenciar a disponibilidade dos profissionais e garantir uma distribuição equitativa das marcações.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## <a id="descricao-dos-usuarios"></a>Descrição dos Usuários
 
-## Learn More
+- **Clientes**: São os usuários finais que desejam agendar serviços de barbearia.
+- **Proprietários de Barbearias**: São os administradores da plataforma, responsáveis pela gestão da agenda e dos serviços oferecidos.
 
-To learn more about Next.js, take a look at the following resources:
+## <a id="alternativas-concorrentes"></a>Alternativas Concorrentes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Agendamento por Telefone**: Muitas barbearias ainda utilizam o agendamento por telefone, o que pode ser demorado e propenso a erros.
+- **Agendamento Presencial**: Alguns estabelecimentos permitem o agendamento presencial, porém, isso pode resultar em filas e espera excessiva.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## <a id="escopo"></a>Escopo
 
-## Deploy on Vercel
+O sistema permitirá que os clientes agendem serviços de barbearia de forma online, escolhendo horários disponíveis e profissionais específicos. Os proprietários de barbearias poderão gerenciar a agenda, visualizar os agendamentos e realizar o acompanhamento das atividades do estabelecimento.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## <a id="requisitos-funcionais"></a>Requisitos Funcionais
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-=======
-# AgendeBarber
->>>>>>> fe043bff8ed77379fdfcf313c84794a1df83a57d
+- **RF01**: Cadastro de Clientes
+- **RF02**: Cadastro de Proprietários de Barbearias
+- **RF03**: Agendamento de Serviços pelos Clientes
+- **RF04**: Gestão da Agenda pelos Proprietários de Barbearias
+- **RF05**: Notificações de Agendamento para Clientes e Proprietários
+- **RF06**: Cancelamento de Agendamento por Clientes e Proprietários
+
+## <a id="requisitos-nao-funcionais"></a>Requisitos Não Funcionais
+
+- **RNF01**: Interface Intuitiva e Amigável
+- **RNF02**: Segurança dos Dados dos Clientes e Proprietários
+- **RNF03**: Desempenho e Escalabilidade da Plataforma
+- **RNF04**: Disponibilidade do Sistema 24/7
+- **RNF05**: Suporte a Diferentes Dispositivos e Navegadores
+
+## <a id="regras-de-negocio"></a>Regras de Negócio
+
+- **RN01**: Os clientes só podem agendar serviços disponíveis nos horários definidos pelos proprietários de barbearias.
+- **RN02**: Os proprietários de barbearias devem receber notificações instantâneas sobre novos agendamentos e cancelamentos.
+- **RN03**: Os clientes devem receber lembretes automáticos sobre seus agendamentos próximos.
+
+## <a id="diagrama-de-casos-de-uso"></a>Diagrama de Casos de Uso
+
+Inserir o diagrama de casos de uso aqui.
+
+## <a id="requisitos-funcionais-x-casos-de-uso"></a>Requisitos Funcionais x Casos de Uso
+
+| Casos de Uso       | RF01 | RF02 | RF03 | RF04 | RF05 | RF06 |
+|--------------------|------|------|------|------|------|------|
+| Cadastro de Clientes |  x   |      |      |      |      |      |
+| Cadastro de Proprietários de Barbearias |      |  x   |      |      |      |      |
+| Agendamento de Serviços pelos Clientes |      |      |  x   |      |      |      |
+| Gestão da Agenda pelos Proprietários de Barbearias |      |      |      |  x   |      |      |
+| Notificações de Agendamento para Clientes e Proprietários |      |      |      |      |  x   |      |
+| Cancelamento de Agendamento por Clientes e Proprietários |      |      |      |      |      |  x   |
+
+---
+
+
