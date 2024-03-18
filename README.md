@@ -42,6 +42,23 @@ O sistema permitirá que os clientes agendem serviços de barbearia de forma onl
 - **RF04**: Gestão da Agenda pelos Proprietários de Barbearias
 - **RF05**: Notificações de Agendamento para Clientes e Proprietários
 - **RF06**: Cancelamento de Agendamento por Clientes e Proprietários
+- **RF07**: Agendamento Dinâmico Alinhado com a Agenda de Disponibilidade do Serviço
+- **RF08**: Pagamento Automático Via Cartão Online
+- **RF09**: Renovação de Assinatura Automática
+- **RF10**: Alinhamento Automatizado da Ferramenta com o WhatsApp
+- **RF11**: Personalização do App de Acordo com o Branding da Empresa
+- **RF12**: Ferramentas de Upselling e Cross-selling Atreladas
+- **RF13**: Recuperação de Venda Automática
+- **RF14**: Automação de Público de Recorrência
+- **RF15**: Funil de Vendas
+- **RF16**: Redirecionamento de Públicos de Várias Redes para o Aplicativo Automaticamente
+- **RF17**: CRM de Controle de Vendas e Análise de Dados
+- **RF18**: Disparo de Mensagens em Massa para Atender Novas Promoções
+- **RF19**: ChatBot de Resposta Rápida com API de Inteligência Artificial
+- **RF20**: Gateway de Pagamento de Taxa Baixa com Pagamento Instantâneo
+- **RF21**: Captura de Dados do Cliente
+- **RF22**: Estudo com Inteligência Artificial e Análise de Dados para Entender os Hábitos do Cliente
+- **RF23**: Integração de Atendimento Automatizado com Sistema de Agendamento do App
 
 ## <a id="requisitos-nao-funcionais"></a>Requisitos Não Funcionais
 
@@ -63,15 +80,29 @@ Inserir o diagrama de casos de uso aqui.
 
 ## <a id="requisitos-funcionais-x-casos-de-uso"></a>Requisitos Funcionais x Casos de Uso
 
-| Casos de Uso       | RF01 | RF02 | RF03 | RF04 | RF05 | RF06 |
-|--------------------|------|------|------|------|------|------|
-| Cadastro de Clientes |  x   |      |      |      |      |      |
-| Cadastro de Proprietários de Barbearias |      |  x   |      |      |      |      |
-| Agendamento de Serviços pelos Clientes |      |      |  x   |      |      |      |
-| Gestão da Agenda pelos Proprietários de Barbearias |      |      |      |  x   |      |      |
-| Notificações de Agendamento para Clientes e Proprietários |      |      |      |      |  x   |      |
-| Cancelamento de Agendamento por Clientes e Proprietários |      |      |      |      |      |  x   |
-
----
-
+| Casos de Uso       | RF01 | RF02 | RF03 | RF04 | RF05 | RF06 | RF07 | RF08 | RF09 | RF10 | RF11 | RF12 | RF13 | RF14 | RF15 | RF16 | RF17 | RF18 | RF19 | RF20 | RF21 | RF22 | RF23 |
+|--------------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
+| Cadastro de Clientes |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Cadastro de Proprietários de Barbearias |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Agendamento de Serviços pelos Clientes |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Gestão da Agenda pelos Proprietários de Barbearias |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Notificações de Agendamento para Clientes e Proprietários |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Cancelamento de Agendamento por Clientes e Proprietários |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Agendamento Dinâmico Alinhado com a Agenda de Disponibilidade do Serviço |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Pagamento Automático Via Cartão Online |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Renovação de Assinatura Automática |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |      |
+| Alinhamento Automatizado da Ferramenta com o WhatsApp |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |      |
+| Personalização do App de Acordo com o Branding da Empresa |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |      |
+| Ferramentas de Upselling e Cross-selling Atreladas |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |      |
+| Recuperação de Venda Automática |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |
+| Automação de Público de Recorrência |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |
+| Funil de Vendas |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |      |
+| Redirecionamento de Públicos de Várias Redes para o Aplicativo Automaticamente |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |      |
+| CRM de Controle de Vendas e Análise de Dados |      |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |      |
+| Disparo de Mensagens em Massa para Atender Novas Promoções |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |      |
+| ChatBot de Resposta Rápida com API de Inteligência Artificial |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |      |
+| Gateway de Pagamento de Taxa Baixa com Pagamento Instantâneo |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |      |
+| Captura de Dados do Cliente |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |      |
+| Estudo com Inteligência Artificial e Análise de Dados para Entender os Hábitos do Cliente |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |      |      |
+| Integração de Atendimento Automatizado com Sistema de Agendamento do App |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |  x   |
 
